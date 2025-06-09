@@ -1,0 +1,11 @@
+<%- include('partials/header', { user: user, title: 'Ana Sayfa', messages: messages }) %>
+
+<h1>Hoşgeldiniz!</h1>
+
+<% if(user) { %>
+  <p>Planlarını görmek için <a href="/plans">buraya tıklayın</a>.</p>
+<% } else { %>
+  <p>Lütfen <a href="/login">giriş yapın</a> veya <a href="/register">kayıt olun</a>.</p>
+<% } %>
+
+<%- include('partials/footer') %>

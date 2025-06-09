@@ -1,0 +1,43 @@
+<%- include('../partials/header', { title: 'Yeni Plan', user: user }) %>
+
+<h2>Yeni Plan Oluştur</h2>
+
+<form action="/plans" method="POST">
+  <label for="title">Başlık:</label>
+  <input type="text" id="title" name="title" required />
+
+  <label for="destination">Gidilecek Yer:</label>
+  <input type="text" id="destination" name="destination" required />
+
+  <label for="accommodation">Konaklama (Otel Adı):</label>
+  <input type="text" id="accommodation" name="accommodation" />
+
+  <label for="transport">Ulaşım Aracı:</label>
+  <input type="text" id="transport" name="transport" />
+
+  <label for="startDate">Başlangıç Tarihi:</label>
+  <input type="date" id="startDate" name="startDate" required />
+
+  <label for="endDate">Bitiş Tarihi:</label>
+  <input type="date" id="endDate" name="endDate" required />
+
+  <label for="notes">Notlar:</label>
+  <textarea id="notes" name="notes"></textarea>
+
+  <h3>Günlük Planlar</h3>
+
+  <% for(let i = 0; i < 3; i++) { %>
+    <fieldset>
+      <legend>Gün <%= i + 1 %></legend>
+      <label for="stops-location-<%= i %>">Yer:</label>
+      <input type="text" id="stops-location-<%= i %>" name="stops[<%= i %>][location]" /><br>
+
+      <label for="stops-activities-<%= i %>">Etkinlikler (virgülle ayırın):</label>
+      <input type="text" id="stops-activities-<%= i %>" name="stops[<%= i %>][activities]" /><br>
+    </fieldset>
+  <% } %>
+
+  <button type="submit">Oluştur</button>
+</form>
+
+<%- include('../partials/footer') %>

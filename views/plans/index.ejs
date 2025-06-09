@@ -1,0 +1,23 @@
+<%- include('../partials/header', { title: 'Planlarım', user: user }) %>
+
+<h2>Planlarım</h2>
+<a href="/plans/new">Yeni Plan Oluştur</a>
+
+<% if(plans.length === 0) { %>
+  <p>Henüz planınız yok.</p>
+<% } else { %>
+  <ul>
+    <% plans.forEach(plan => { %>
+      <li>
+        <strong><%= plan.title %></strong> - <%= plan.destination %> 
+        (<%= plan.startDate.toISOString().slice(0,10) %> - <%= plan.endDate.toISOString().slice(0,10) %>)
+        <a href="/plans/<%= plan._id %>/edit">Düzenle</a>
+        <form action="/plans/<%= plan._id %>?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit" onclick="return confirm('Planı silmek istediğinize emin misiniz?')">Sil</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<%- include('../partials/footer') %>

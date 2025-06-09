@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= typeof title !== 'undefined' ? title : 'Travel Planner' %></title>
+  <link rel="stylesheet" href="/styles.css" />
+
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Ana Sayfa</a>
+      <% if(user) { %>
+        <a href="/plans">Planlarım</a>
+        <span>Hoşgeldin, <%= user.username %></span>
+        <a href="/logout">Çıkış</a>
+      <% } else { %>
+        <a href="/login">Giriş</a>
+        <a href="/register">Kayıt Ol</a>
+      <% } %>
+    </nav>
+  </header>
+  <main>
+    <% if (messages.error_msg && messages.error_msg.length > 0) { %>
+      <div class="alert alert-danger"><%= messages.error_msg[0] %></div>
+    <% } %>
+    <% if (messages.success_msg && messages.success_msg.length > 0) { %>
+      <div class="alert alert-success"><%= messages.success_msg[0] %></div>
+    <% } %>

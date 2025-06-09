@@ -1,0 +1,36 @@
+<h1>Yeni Seyahat Planı Oluştur</h1>
+<form action="/plans" method="POST">
+  <label>Başlık:</label>
+  <input type="text" name="title" required><br>
+
+  <label>Gidilecek Yer:</label>
+  <input type="text" name="destination"><br>
+
+  <label>Konaklama:</label>
+  <input type="text" name="accommodation"><br>
+
+  <label>Ulaşım:</label>
+  <input type="text" name="transport"><br>
+
+  <label>Başlangıç Tarihi:</label>
+  <input type="date" name="startDate"><br>
+
+  <label>Bitiş Tarihi:</label>
+  <input type="date" name="endDate"><br>
+
+  <label>Notlar:</label><br>
+  <textarea name="notes"></textarea><br>
+
+  <h3>Günlük Planlar</h3>
+  <% for (let i = 1; i <= 3; i++) { %>
+    <fieldset>
+      <legend>Gün <%= i %></legend>
+      <label>Yer:</label>
+      <input type="text" name="stops[<%= i - 1 %>][location]"><br>
+      <label>Etkinlikler (virgülle ayırın):</label>
+      <input type="text" name="stops[<%= i - 1 %>][activities]"><br>
+    </fieldset>
+  <% } %>
+
+  <button type="submit">Kaydet</button>
+</form>

@@ -1,0 +1,46 @@
+<%- include('../partials/header', { title: 'Planı Düzenle', user: user }) %>
+
+<h1>Planı Düzenle</h1>
+
+<form action="/plans/<%= plan._id %>?_method=PUT" method="POST">
+  <label>Başlık:</label>
+  <input type="text" name="title" value="<%= plan.title %>" required><br>
+
+  <label>Gidilecek Yer:</label>
+  <input type="text" name="destination" value="<%= plan.destination || '' %>"><br>
+
+  <label>Konaklama (Otel Adı):</label>
+  <input type="text" name="accommodation" value="<%= plan.accommodation || '' %>"><br>
+
+  <label>Ulaşım Aracı:</label>
+  <input type="text" name="transport" value="<%= plan.transport || '' %>"><br>
+
+  <label>Başlangıç Tarihi:</label>
+  <input type="date" name="startDate" value="<%= plan.startDate ? plan.startDate.toISOString().split('T')[0] : '' %>"><br>
+
+  <label>Bitiş Tarihi:</label>
+  <input type="date" name="endDate" value="<%= plan.endDate ? plan.endDate.toISOString().split('T')[0] : '' %>"><br>
+
+  <label>Notlar:</label><br>
+  <textarea name="notes"><%= plan.notes || '' %></textarea><br>
+
+  <h3>Günlük Planlar</h3>
+
+  <% 
+    let stops = plan.stops && plan.stops.length ? plan.stops : [{}, {}, {}];
+    for(let i = 0; i < 3; i++) { 
+  %>
+    <fieldset>
+      <legend>Gün <%= i + 1 %></legend>
+      <label>Yer:</label>
+      <input type="text" name="stops[<%= i %>][location]" value="<%= stops[i].location || '' %>"><br>
+
+      <label>Etkinlikler (virgülle ayırın):</label>
+      <input type="text" name="stops[<%= i %>][activities]" value="<%= stops[i].activities || '' %>"><br>
+    </fieldset>
+  <% } %>
+
+  <button type="submit">Güncelle</button>
+</form>
+
+<%- include('../partials/footer') %>
