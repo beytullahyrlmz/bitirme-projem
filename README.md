@@ -105,5 +105,4 @@ Zrealizowany projekt spełnia wszystkie wymagania funkcjonalne. Aplikacja dział
 Projekt stanowi również praktyczne zastosowanie wzorca MVC oraz umożliwia rozwijanie umiejętności związanych z pracą z bazami danych, autoryzacją, szablonami i RESTowym podejściem w tworzeniu aplikacji internetowych. 
 
  
-
 📁 Do raportu dołączono folder z zrzutami ekranu przedstawiającymi działanie aplikacji. 
